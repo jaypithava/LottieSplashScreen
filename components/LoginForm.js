@@ -69,7 +69,7 @@ const LoginForm = () => {
                 onChangeText={handleChange('email')}
                 autoCapitalize="none"
                 placeholder="example@gmail.com"
-                label="email"
+                label="Email"
               />
               <FormInput
                 value={values.password}
