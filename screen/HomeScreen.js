@@ -1,9 +1,10 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {ScrollView, StyleSheet, View, Animated, Dimensions} from 'react-native';
 import FormHeader from '../components/FormHeader';
 import FormSelectorBtn from '../components/FormSelectorBtn';
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
+import LottieView from 'lottie-react-native';
 
 const {width} = Dimensions.get('window');
 
@@ -35,9 +36,24 @@ export default function HomeScreen() {
     inputRange: [0, width],
     outputRange: ['rgba(27,27,51,0.4)', 'rgba(27,27,51,1)'],
   });
+  const [animationLoaded, setAnimationLoaded] = useState(false);
+  const ref = useRef(null);
+  const onAnimationFinish = () => {
+    setAnimationLoaded(true);
+  };
   // scrollView.current.scrollToEnd();
   return (
     <View style={styles.mainView}>
+      <LottieView
+        ref={animation => {
+          ref.current = animation;
+        }}
+        style={styles.lottieView}
+        source={require('../assets/login.json')}
+        autoPlay
+        loop={true}
+        onAnimationFinish={onAnimationFinish}
+      />
       <View style={styles.subView}>
         <FormHeader
           leftHeading="Welcome  "
@@ -84,7 +100,14 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    paddingTop: 120,
+    marginTop: 50,
+  },
+  lottieView: {
+    width: '60%',
+    marginLeft: '12%',
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   subView: {
     height: 80,
