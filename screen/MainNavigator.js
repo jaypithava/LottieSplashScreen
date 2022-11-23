@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from './HomeScreen';
 import SplashScreen from './SplashScreen';
+import DashBoard from './DashBoard';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,11 @@ const MainNavigator = () => {
           name="Home"
           options={{animationEnabled: true, header: () => null}}
           component={HomeScreen}
+        />
+        <Stack.Screen
+          name="DashBoard"
+          component={DashBoard}
+          options={{animationEnabled: true, header: () => null}}
         />
       </Stack.Navigator>
     </NavigationContainer>

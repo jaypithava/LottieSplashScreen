@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react';
-import {View, StyleSheet, StatusBar} from 'react-native';
+import {View, StyleSheet, StatusBar, Alert} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SplashScreen = props => {
   const [authLoaded, setAuthLoaded] = useState(false);
@@ -19,9 +20,24 @@ const SplashScreen = props => {
     setAnimationLoaded(true);
   };
 
+  const readData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('login');
+      console.log('Get Login Value:', value);
+      if (value !== null) {
+        props.navigation.replace('DashBoard');
+      } else {
+        props.navigation.replace('Home');
+      }
+    } catch (e) {
+      Alert.alert('Failed to fetch the input from storage');
+    }
+  };
+
   useEffect(() => {
     if (authLoaded && animationLoaded) {
-      props.navigation.replace('Home');
+      readData();
+      //props.navigation.replace('Home');
     }
   }, [authLoaded, animationLoaded, props.navigation]);
 

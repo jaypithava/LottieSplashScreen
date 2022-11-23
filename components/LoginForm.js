@@ -5,8 +5,11 @@ import FormSubmitBtn from './FormSubmitBtn';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {Alert} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginForm = () => {
+  const navigation = useNavigation();
   const userInfo = {
     email: '',
     password: '',
@@ -46,11 +49,9 @@ const LoginForm = () => {
         initialValues={userInfo}
         validationSchema={validationSchema}
         onSubmit={data => {
-          if (data.email === 'abc@gmail.com' && data.password === '123456') {
-            Alert.alert('Success!');
-          } else {
-            Alert.alert('Invalid Email or Password!');
-          }
+          AsyncStorage.setItem('login', data.email);
+          console.log(JSON.parse(JSON.stringify(data.email)));
+          navigation.navigate('DashBoard');
         }}>
         {({
           values,
