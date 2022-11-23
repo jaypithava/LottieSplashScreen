@@ -57,12 +57,7 @@ const SignUpForm = () => {
       <Formik
         initialValues={userInfo}
         validationSchema={validationSchema}
-        onsubmit={(values, formikActions) => {
-          setTimeout(() => {
-            formikActions.resetForm();
-            formikActions.setSubmitting(false);
-          }, 3000);
-        }}>
+        onSubmit={data => console.log('Sign Up Data:', data)}>
         {({
           values,
           errors,
@@ -111,11 +106,7 @@ const SignUpForm = () => {
                 label="Confirm Password"
                 secureTextEntry={true}
               />
-              <FormSubmitBtn
-                title="Sign Up"
-                submitting={isSubmitting}
-                onPress={handleSubmit}
-              />
+              <FormSubmitBtn title="Sign Up" onPress={handleSubmit} />
             </>
           );
         }}

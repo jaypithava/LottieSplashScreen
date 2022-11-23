@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, StatusBar} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {useEffect} from 'react';
 
@@ -27,6 +27,7 @@ const SplashScreen = props => {
 
   return (
     <View style={styles.root}>
+      <StatusBar translucent backgroundColor="transparent" />
       <LottieView
         ref={animation => {
           ref.current = animation;

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     color: '#1b1b33',
   },
   subText: {
-    fontSize: 18,
+    fontSize: 12,
     textAlign: 'center',
     color: '#1b1b33',
   },

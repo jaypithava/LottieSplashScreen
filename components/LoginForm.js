@@ -4,6 +4,7 @@ import FormInput from './FormInput';
 import FormSubmitBtn from './FormSubmitBtn';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import {Alert} from 'react-native';
 
 const LoginForm = () => {
   const userInfo = {
@@ -44,12 +45,12 @@ const LoginForm = () => {
       <Formik
         initialValues={userInfo}
         validationSchema={validationSchema}
-        onsubmit={(values, formikActions) => {
-          setTimeout(() => {
-            console.debug('Hi');
-            formikActions.resetForm();
-            formikActions.setSubmitting(false);
-          }, 3000);
+        onSubmit={data => {
+          if (data.email === 'abc@gmail.com' && data.password === '123456') {
+            Alert.alert('Success!');
+          } else {
+            Alert.alert('Invalid Email or Password!');
+          }
         }}>
         {({
           values,
@@ -81,11 +82,7 @@ const LoginForm = () => {
                 label="Password"
                 secureTextEntry={true}
               />
-              <FormSubmitBtn
-                title="Login"
-                submitting={isSubmitting}
-                onPress={handleSubmit}
-              />
+              <FormSubmitBtn title="Login" onPress={handleSubmit} />
             </>
           );
         }}

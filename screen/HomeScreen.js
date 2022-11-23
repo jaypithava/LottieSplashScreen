@@ -101,16 +101,17 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     marginTop: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   lottieView: {
-    width: '60%',
-    marginLeft: '12%',
+    width: '45%',
     resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
   },
   subView: {
-    height: 80,
+    height: 75,
   },
   touchableMainView: {
     flexDirection: 'row',
