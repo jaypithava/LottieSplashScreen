@@ -4,7 +4,6 @@ import FormInput from './FormInput';
 import FormSubmitBtn from './FormSubmitBtn';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
