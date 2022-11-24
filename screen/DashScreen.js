@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {
   StyleSheet,
-  View,
   FlatList,
+  View,
   Text,
   Image,
   ActivityIndicator,
 } from 'react-native';
-
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 export default class DashScreen extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +36,7 @@ export default class DashScreen extends Component {
       });
   };
 
-  renderRow = ({item}) => {
+  renderRow = ({item, index}) => {
     return (
       <View style={styles.itemRow}>
         <Image source={{uri: item.url}} style={styles.itemImage} />

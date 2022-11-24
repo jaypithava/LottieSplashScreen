@@ -1,12 +1,13 @@
 import {StyleSheet, View} from 'react-native';
 import {Platform, Button} from 'react-native';
-import React, {Component} from 'react';
+import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import DashScreen from './DashScreen';
 import SettingsScreen from './SettingsScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+import SectionListScreen from './SectionScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -37,6 +38,14 @@ const DashBoard = () => {
           component={SettingsScreen}
           options={{
             tabBarLabel: 'CardView',
+            tabBarIcon: () => <MaterialCommunityIcons name="bell" size={20} />,
+          }}
+        />
+        <Tab.Screen
+          name="SectionView"
+          component={SectionListScreen}
+          options={{
+            tabBarLabel: 'SectionView',
             tabBarIcon: () => <MaterialCommunityIcons name="bell" size={20} />,
           }}
         />
