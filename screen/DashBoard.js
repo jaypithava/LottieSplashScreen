@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import {Text, Button} from 'react-native';
+import {Platform, Button} from 'react-native';
 import React, {Component} from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import DashScreen from './DashScreen';
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'blue',
     height: 40,
+    marginTop: Platform.OS === 'ios' ? 50 : null,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
