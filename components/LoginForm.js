@@ -47,16 +47,16 @@ const LoginForm = () => {
       <Formik
         initialValues={userInfo}
         validationSchema={validationSchema}
-        onSubmit={data => {
+        onSubmit={(data, {resetForm}) => {
           AsyncStorage.setItem('login', data.email);
           console.log(JSON.parse(JSON.stringify(data.email)));
+          resetForm();
           navigation.navigate('DashBoard');
         }}>
         {({
           values,
           errors,
           touched,
-          isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,

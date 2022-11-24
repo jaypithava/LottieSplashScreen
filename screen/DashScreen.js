@@ -7,7 +7,7 @@ import {
   Image,
   ActivityIndicator,
 } from 'react-native';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import {Button} from 'react-native-paper';
 export default class DashScreen extends Component {
   constructor(props) {
     super(props);
