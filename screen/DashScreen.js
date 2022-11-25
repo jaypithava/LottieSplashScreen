@@ -37,6 +37,7 @@ export default class DashScreen extends Component {
   };
 
   renderRow = ({item, index}) => {
+    //console.log(index);
     return (
       <View style={styles.itemRow}>
         <Image source={{uri: item.url}} style={styles.itemImage} />
