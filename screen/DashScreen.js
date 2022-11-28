@@ -6,8 +6,10 @@ import {
   Text,
   Image,
   ActivityIndicator,
+  TouchableWithoutFeedback,
 } from 'react-native';
-import {Button} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+
 export default class DashScreen extends Component {
   constructor(props) {
     super(props);
@@ -37,14 +39,22 @@ export default class DashScreen extends Component {
   };
 
   renderRow = ({item, index}) => {
-    //console.log(index);
     return (
-      <View style={styles.itemRow}>
-        <Image source={{uri: item.url}} style={styles.itemImage} />
-        <Text style={styles.itemTitle}>{'Id is : ' + item.id}</Text>
-        <Text style={styles.itemTitle}>{'Title is : ' + item.title}</Text>
-        {/* <Image source={{uri: item.thumbnailUrl}} style={styles.itemImage} /> */}
-      </View>
+      <TouchableWithoutFeedback
+        onPress={() =>
+          this.props.navigation.navigate('ItemClick', {
+            productId: item.id,
+            productName: item.title,
+            productImage: item.url,
+          })
+        }>
+        <View style={styles.itemRow}>
+          <Image source={{uri: item.url}} style={styles.itemImage} />
+          <Text style={styles.itemTitle}>{'Id is : ' + item.id}</Text>
+          <Text style={styles.itemTitle}>{'Title is : ' + item.title}</Text>
+          {/* <Image source={{uri: item.thumbnailUrl}} style={styles.itemImage} /> */}
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 
