@@ -30,7 +30,9 @@ const DashBoard = () => {
           component={DashScreen}
           options={{
             tabBarLabel: 'LoadMore',
-            tabBarIcon: () => <MaterialCommunityIcons name="home" size={20} />,
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name="home" size={20} color={color} />
+            ),
           }}
         />
         <Tab.Screen
@@ -38,8 +40,8 @@ const DashBoard = () => {
           component={SettingsScreen}
           options={{
             tabBarLabel: 'CardView',
-            tabBarIcon: () => (
-              <MaterialCommunityIcons name="id-card" size={20} />
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name="id-card" size={20} color={color} />
             ),
           }}
         />
@@ -48,7 +50,9 @@ const DashBoard = () => {
           component={SectionListScreen}
           options={{
             tabBarLabel: 'SectionView',
-            tabBarIcon: () => <MaterialCommunityIcons name="bell" size={20} />,
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name="bell" size={20} color={color} />
+            ),
           }}
         />
       </Tab.Navigator>
