@@ -4,20 +4,57 @@ import React from 'react';
 const ItemClick = ({route}) => {
   const {productId, productName, productImage} = route.params;
   return (
-    <View
-      style={{justifyContent: 'center', alignItems: 'center', marginTop: 50}}>
-      <Text>ItemClick: {productId}</Text>
-      <Text>ItemClick: {productName}</Text>
-      <Image source={{uri: productImage}} style={styles.itemImage} />
-    </View>
+    <>
+      <View style={styles.container}>
+        <Image source={{uri: productImage}} style={styles.itemImage} />
+        <Text style={styles.textStyle}>ProductId: {productId}</Text>
+        <Text style={styles.subTextStyle}>ProductName: {productName}</Text>
+      </View>
+      <View style={styles.subContainer}>
+        <Image source={{uri: productImage}} style={styles.subItemImage} />
+        <Image source={{uri: productImage}} style={styles.subItemImage} />
+        <Image source={{uri: productImage}} style={styles.subItemImage} />
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    margin: 10,
+    borderRadius: 5,
+    backgroundColor: '#5c4d79',
+  },
+  subContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    margin: 10,
+    borderRadius: 5,
+    backgroundColor: '#5c4d79',
+  },
+  textStyle: {
+    margin: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  subTextStyle: {
+    margin: 10,
+    fontSize: 18,
+  },
   itemImage: {
     width: '100%',
-    height: 200,
+    height: 350,
     resizeMode: 'cover',
+  },
+  subItemImage: {
+    width: '30%',
+    height: 100,
+    resizeMode: 'cover',
+    borderWidth: 4,
+    borderRadius: 5,
   },
 });
 

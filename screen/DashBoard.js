@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'blue',
     height: 40,
-    marginTop: Platform.OS === 'ios' ? 50 : null,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,

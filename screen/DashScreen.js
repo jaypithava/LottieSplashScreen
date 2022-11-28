@@ -8,7 +8,6 @@ import {
   ActivityIndicator,
   TouchableWithoutFeedback,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 export default class DashScreen extends Component {
   constructor(props) {

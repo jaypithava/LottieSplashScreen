@@ -26,12 +26,21 @@ const MainNavigator = () => {
         <Stack.Screen
           name="DashBoard"
           component={DashBoard}
-          options={{animationEnabled: true, header: () => null}}
+          options={{title: 'Dashboard'}}
         />
         <Stack.Screen
           name="ItemClick"
           component={ItemClick}
-          options={{animationEnabled: true, header: () => null}}
+          options={{
+            title: 'Product Details',
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
