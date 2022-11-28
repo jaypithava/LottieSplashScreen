@@ -2,7 +2,7 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 
 const ItemClick = ({route}) => {
-  const {productId, productName, productImage} = route.params;
+  const {productId, productName, productImage, thumbnailUrl} = route.params;
   return (
     <>
       <View style={styles.container}>
@@ -11,9 +11,9 @@ const ItemClick = ({route}) => {
         <Text style={styles.subTextStyle}>ProductName: {productName}</Text>
       </View>
       <View style={styles.subContainer}>
-        <Image source={{uri: productImage}} style={styles.subItemImage} />
-        <Image source={{uri: productImage}} style={styles.subItemImage} />
-        <Image source={{uri: productImage}} style={styles.subItemImage} />
+        <Image source={{uri: thumbnailUrl}} style={styles.subItemImage} />
+        <Image source={{uri: thumbnailUrl}} style={styles.subItemImage} />
+        <Image source={{uri: thumbnailUrl}} style={styles.subItemImage} />
       </View>
     </>
   );

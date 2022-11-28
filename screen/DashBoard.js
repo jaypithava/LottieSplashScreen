@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import {Platform, Button} from 'react-native';
+import {Button} from 'react-native';
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import DashScreen from './DashScreen';
@@ -24,7 +24,7 @@ const DashBoard = () => {
       <View style={styles.container}>
         <Button onPress={() => onLogout()} title="Logout" />
       </View>
-      <Tab.Navigator activeColor="#f0edf6" inactiveColor="red">
+      <Tab.Navigator activeColor="white" inactiveColor="red" fontWeight="bold">
         <Tab.Screen
           name="LoadMore"
           component={DashScreen}
@@ -38,7 +38,9 @@ const DashBoard = () => {
           component={SettingsScreen}
           options={{
             tabBarLabel: 'CardView',
-            tabBarIcon: () => <MaterialCommunityIcons name="bell" size={20} />,
+            tabBarIcon: () => (
+              <MaterialCommunityIcons name="id-card" size={20} />
+            ),
           }}
         />
         <Tab.Screen

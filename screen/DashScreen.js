@@ -45,6 +45,7 @@ export default class DashScreen extends Component {
             productId: item.id,
             productName: item.title,
             productImage: item.url,
+            thumbnailUrl: item.thumbnailUrl,
           })
         }>
         <View style={styles.itemRow}>
