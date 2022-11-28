@@ -33,6 +33,9 @@ const MainNavigator = () => {
           component={ItemClick}
           options={{
             title: 'Product Details',
+            presentation: 'modal',
+            animationTypeForReplace: 'popover',
+            animation: 'slide_from_right',
             headerStyle: {
               backgroundColor: '#f4511e',
             },

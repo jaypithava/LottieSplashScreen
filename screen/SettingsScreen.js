@@ -30,7 +30,16 @@ export default class SettingsScreen extends Component {
 
   _renderItem = ({item, index}) => {
     return (
-      <TouchableOpacity style={styles.cardView}>
+      <TouchableOpacity
+        style={styles.cardView}
+        onPress={() =>
+          this.props.navigation.navigate('ItemClick', {
+            productId: item.id,
+            productName: item.title,
+            productImage: item.url,
+            thumbnailUrl: item.thumbnailUrl,
+          })
+        }>
         <Image style={styles.cardImage} source={{uri: item.url}} />
         <Text style={styles.cardText}>{item.title}</Text>
       </TouchableOpacity>
@@ -59,7 +68,7 @@ export default class SettingsScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 20,
   },
   cardText: {
     fontSize: 16,
