@@ -1,29 +1,17 @@
 import {StyleSheet, View} from 'react-native';
-import {Button} from 'react-native';
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import DashScreen from './DashScreen';
 import SettingsScreen from './SettingsScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
 import SectionListScreen from './SectionScreen';
+import UserProfileScreen from './UserProfileScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
 const DashBoard = () => {
-  const navigation = useNavigation();
-
-  const onLogout = () => {
-    AsyncStorage.clear();
-    navigation.navigate('Home');
-  };
-
   return (
     <>
-      <View style={styles.container}>
-        <Button onPress={() => onLogout()} title="Logout" />
-      </View>
       <Tab.Navigator activeColor="white" inactiveColor="red" fontWeight="bold">
         <Tab.Screen
           name="LoadMore"
@@ -52,6 +40,20 @@ const DashBoard = () => {
             tabBarLabel: 'SectionView',
             tabBarIcon: ({color}) => (
               <MaterialCommunityIcons name="bell" size={20} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={UserProfileScreen}
+          options={{
+            tabBarLabel: 'Profile',
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons
+                name="face-man-profile"
+                size={20}
+                color={color}
+              />
             ),
           }}
         />
