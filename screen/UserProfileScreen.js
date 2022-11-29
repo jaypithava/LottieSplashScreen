@@ -1,29 +1,36 @@
-import {
-  View,
-  TouchableHighlight,
-  Image,
-  StyleSheet,
-  Text,
-  Button,
-} from 'react-native';
-import React, {useEffect} from 'react';
+import {View, StyleSheet, Button} from 'react-native';
+import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'react-native-image-picker';
+import {ImagePickerAvatar} from '../components/utils/ImagePickerAvatar';
+import {ImagePickerHeader} from '../components/utils/ImagePickerHeader';
+import {ImagePickerModal} from '../components/utils/ImagePickerModal';
 
 const UserProfileScreen = () => {
-  const [email, setEmail] = React.useState('');
+  const [pickerResponse, setPickerResponse] = React.useState(null);
+  const [visible, setVisible] = React.useState(false);
   const navigation = useNavigation();
 
-  const readData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('login');
-      setEmail(value);
-    } catch (e) {}
-  };
-
-  useEffect(() => {
-    readData();
+  const onImageLibraryPress = useCallback(() => {
+    const options = {
+      selectionLimit: 1,
+      mediaType: 'photo',
+      includeBase64: false,
+    };
+    ImagePicker.launchImageLibrary(options, setPickerResponse);
   }, []);
+
+  const onCameraPress = React.useCallback(() => {
+    const options = {
+      saveToPhotos: true,
+      mediaType: 'photo',
+      includeBase64: false,
+    };
+    ImagePicker.launchCamera(options, setPickerResponse);
+  }, []);
+
+  const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
 
   const onLogout = () => {
     AsyncStorage.clear();
@@ -31,19 +38,14 @@ const UserProfileScreen = () => {
   };
   return (
     <View style={styles.container}>
-      <TouchableHighlight
-        style={[styles.image, {borderColor: 'blue', borderWidth: 3}]}>
-        <Image
-          source={{
-            uri: 'https://cdn.searchenginejournal.com/wp-content/uploads/2022/04/reverse-image-search-627b7e49986b0-sej-760x400.png',
-          }}
-          style={styles.profileImg}
-        />
-      </TouchableHighlight>
-      <Text style={{fontWeight: 'bold', marginTop: 10, fontSize: 20}}>
-        Your Email :
-      </Text>
-      <Text style={styles.emailText}>{email}</Text>
+      <ImagePickerHeader />
+      <ImagePickerAvatar uri={uri} onPress={() => setVisible(true)} />
+      <ImagePickerModal
+        isVisible={visible}
+        onClose={() => setVisible(false)}
+        onImageLibraryPress={onImageLibraryPress}
+        onCameraPress={onCameraPress}
+      />
       <Button onPress={() => onLogout()} title="Logout" />
     </View>
   );
@@ -52,36 +54,6 @@ const UserProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 150,
-    height: 150,
-    borderRadius: 150 / 2,
-    overflow: 'hidden',
-    borderWidth: 3,
-    borderColor: 'red',
-  },
-  profileImg: {
-    height: 150,
-    width: 150,
-    borderRadius: 40,
-  },
-  emailText: {
-    borderWidth: 1,
-    borderColor: '#1b1b33',
-    backgroundColor: 'red',
-    width: '50%',
-    height: 30,
-    borderRadius: 8,
-    fontSize: 16,
-    paddingLeft: 8,
-    overflow: 'hidden',
-    marginTop: 20,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
 });
 
