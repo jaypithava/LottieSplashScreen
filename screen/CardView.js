@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-export default class SettingsScreen extends Component {
+export default class CardViewScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +68,7 @@ export default class SettingsScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    flex: 1,
   },
   cardText: {
     fontSize: 16,

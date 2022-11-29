@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-export default class DashScreen extends Component {
+export default class LoadMore extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -87,7 +87,7 @@ export default class DashScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    flex: 1,
     borderColor: 'cyan',
   },
   itemRow: {

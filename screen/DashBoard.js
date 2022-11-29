@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import DashScreen from './DashScreen';
-import SettingsScreen from './SettingsScreen';
+import LoadMore from './LoadMore';
+import CardView from './CardView';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SectionListScreen from './SectionScreen';
 import UserProfileScreen from './UserProfileScreen';
@@ -15,7 +15,7 @@ const DashBoard = () => {
       <Tab.Navigator activeColor="white" inactiveColor="red" fontWeight="bold">
         <Tab.Screen
           name="LoadMore"
-          component={DashScreen}
+          component={LoadMore}
           options={{
             tabBarLabel: 'LoadMore',
             tabBarIcon: ({color}) => (
@@ -25,7 +25,7 @@ const DashBoard = () => {
         />
         <Tab.Screen
           name="CardView"
-          component={SettingsScreen}
+          component={CardView}
           options={{
             tabBarLabel: 'CardView',
             tabBarIcon: ({color}) => (

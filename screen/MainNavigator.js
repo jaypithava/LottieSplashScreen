@@ -26,7 +26,7 @@ const MainNavigator = () => {
         <Stack.Screen
           name="DashBoard"
           component={DashBoard}
-          options={{title: 'Dashboard', headerLeft: () => null}}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="ItemClick"

@@ -51,6 +51,7 @@ const UserProfileScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 16,
     paddingLeft: 8,
+    overflow: 'hidden',
     marginTop: 20,
     textAlign: 'center',
     fontWeight: 'bold',
