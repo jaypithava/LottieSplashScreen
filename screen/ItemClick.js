@@ -1,8 +1,15 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const ItemClick = ({route}) => {
+  const navigation = useNavigation();
   const {productId, productName, productImage, thumbnailUrl} = route.params;
+  const navigateNext = () => {
+    navigation.navigate('NextItem', {
+      detailsImage: thumbnailUrl,
+    });
+  };
   return (
     <>
       <View style={styles.container}>
@@ -14,6 +21,12 @@ const ItemClick = ({route}) => {
         <Image source={{uri: thumbnailUrl}} style={styles.subItemImage} />
         <Image source={{uri: thumbnailUrl}} style={styles.subItemImage} />
         <Image source={{uri: thumbnailUrl}} style={styles.subItemImage} />
+      </View>
+      <View
+        style={{justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
+        <Pressable style={styles.btnStyle} onPress={navigateNext}>
+          <Text style={styles.text}>Buy Product</Text>
+        </Pressable>
       </View>
     </>
   );
@@ -35,10 +48,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#5c4d79',
   },
-  textStyle: {
-    margin: 10,
-    fontSize: 20,
+  btnStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    width: '50%',
+    backgroundColor: '#5c4d79',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
     fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
   subTextStyle: {
     margin: 10,

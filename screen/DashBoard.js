@@ -1,4 +1,3 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import LoadMore from './LoadMore';
@@ -61,21 +60,5 @@ const DashBoard = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    backgroundColor: 'blue',
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
-  textStyle: {
-    color: 'black',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
 
 export default DashBoard;

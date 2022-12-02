@@ -6,6 +6,8 @@ import HomeScreen from './HomeScreen';
 import SplashScreen from './SplashScreen';
 import DashBoard from './DashBoard';
 import ItemClick from './ItemClick';
+import NextItem from './NextItem';
+import LastItem from './LastItem';
 
 const Stack = createStackNavigator();
 
@@ -37,7 +39,41 @@ const MainNavigator = () => {
             animationTypeForReplace: 'popover',
             animation: 'slide_from_right',
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#5c4d79',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="NextItem"
+          component={NextItem}
+          options={{
+            title: 'NextItem',
+            presentation: 'modal',
+            animationTypeForReplace: 'popover',
+            animation: 'slide_from_right',
+            headerStyle: {
+              backgroundColor: '#5c4d79',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="LastItem"
+          component={LastItem}
+          options={{
+            title: 'LastItem',
+            presentation: 'modal',
+            animationTypeForReplace: 'popover',
+            animation: 'slide_from_right',
+            headerStyle: {
+              backgroundColor: '#5c4d79',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
