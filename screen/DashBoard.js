@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-import {BackHandler, Alert} from 'react-native';
+import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import LoadMore from './LoadMore';
 import CardView from './CardView';
@@ -10,26 +9,6 @@ import UserProfileScreen from './UserProfileScreen';
 const Tab = createMaterialBottomTabNavigator();
 
 const DashBoard = () => {
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert('Hold on!', 'Are you sure you want to go back?', [
-        {
-          text: 'Cancel',
-          onPress: () => null,
-          style: 'cancel',
-        },
-        {text: 'YES', onPress: () => BackHandler.exitApp()},
-      ]);
-      return true;
-    };
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
-
-    return () => backHandler.remove();
-  }, []);
-
   return (
     <>
       <Tab.Navigator activeColor="white" inactiveColor="red" fontWeight="bold">
